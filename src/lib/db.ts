@@ -1,10 +1,10 @@
 import { neon } from '@neondatabase/serverless';
 
 if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is not defined in .env.local');
+  console.warn('DATABASE_URL is not defined. Database features will be unavailable.');
 }
 
-export const sql = neon(process.env.DATABASE_URL);
+export const sql = neon(process.env.DATABASE_URL || '');
 
 export interface Trip {
   id: number;
